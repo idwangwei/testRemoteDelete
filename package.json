@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng serve --port 4300 --open",
+    "build": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --aot --prod",
+    "build-stats": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --aot --prod --stats-json",
+    "bundle-report": "webpack-bundle-analyzer dist/stats-es2015.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -18,13 +20,14 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "ng-zorro-antd": "^13.0.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.1.2",
-    "@angular/cli": "~13.1.2",
+    "@angular/cli": "^13.1.2",
     "@angular/compiler-cli": "~13.1.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
@@ -34,6 +37,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.5.2"
+    "typescript": "~4.5.2",
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }
